@@ -1,4 +1,6 @@
 import React from 'react';
+import InstructionForm from './instructionForm.js';
+import IngredientForm from './ingredientForm.js'
 
 class NewRecipe extends React.Component {
   render() {
@@ -22,9 +24,13 @@ class NewRecipe extends React.Component {
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
-            </select>
+            </select><br />
+            <label>Add Ingredient:</label>
+            <IngredientForm />
           <label for="recipe[:prep_time]">Prep Time (mins):</label>
           <input type="text" name="recipe[:prep_time]"></input><br />
+          <label>Add Direction:</label>
+          <InstructionForm />
           <label for="recipe[:creator]">Creator Name:</label>
           <input type="text" name="recipe[:creator]"></input>
         </form>
