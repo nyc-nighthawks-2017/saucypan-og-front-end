@@ -6,47 +6,64 @@ import IngredientForm from './ingredientForm.js'
 class NewRecipe extends React.Component {
   constructor() {
     super();
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
+    this.state = {
+      recipe: {
+        recipeName: "",
+        category: "",
+        diffcultyLevel: 1,
+        ingredient: "",
+        prepTime: 0,
+        directions: "",
+        creator: ""
+        }
+      }
+      this.handleInputChange = this.handleInputChange.bind(this);
+    }
 
-  handleSubmit(event) {
+  handleInputChange(event) {
     event.preventDefault();
-    // post request
-    ReactDOM.render(<IngredientForm />, document.getElementById('ingredient-form'));
+    const { recipeName, category, difficultyLevel, ingredient, prepTime, directions, creator } = this.state.recipe;
+    const target = event.target;
+    const name = target.name;
+
+    this.setState({
+      recipe: {
+        recipeName: target.value
+      }
+    });
   }
 
   render() {
     return (
       <div>
         <form method="post" action="https://stark-falls-42396.herokuapp.com/recipes">
-          <label for="recipe[:name]">Name:</label>
-          <input type="text" name="recipe[:name]"></input>
-          <label for="recipe[:category]">Category:</label>
-          <input type="text" name="recipe[:category]" list="categories"></input><br />
+          <label htmlFor="recipeName">Name:</label>
+          <input type="text" name="recipeName" value={this.state.recipeName} onChange={this.handleInputChange}></input>
+          <label htmlFor="category">Category:</label>
+          <input type="text" name="category" list="categories" value={this.state.category}></input><br />
             <datalist id="categories">
               <option value="Appetizer"></option>
               <option value="Salad"></option>
               <option value="Main"></option>
               <option value="Desserts"></option>
             </datalist>
-          <label for="difficulty_level">Difficulty Level:</label>
-            <select name="recipe[:difficulty_level]">
+          <label htmlFor="difficultyLevel">Difficulty Level:</label>
+            <select name="difficultyLevel" value ={this.state.difficultyLevel}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
             </select><br />
-            <label>Add Ingredient:</label>
-            <div id="ingredient-form">
-              <IngredientForm handleSubmit={ this.handleSubmit }/>
-            </div>
-          <label for="recipe[:prep_time]">Prep Time (mins):</label>
-          <input type="text" name="recipe[:prep_time]"></input><br />
-          <label>Add Direction:</label>
-          <InstructionForm />
-          <label for="recipe[:creator]">Creator Name:</label>
-          <input type="text" name="recipe[:creator]"></input>
+          <label>Add Ingredients:</label>
+            <textarea type="text" name="ingredient" value={this.state.ingredient}></textarea>
+          <label htmlFor="prepTime">Prep Time (mins):</label>
+            <input type="text" name="prepTime" value={this.state.prepTime}></input><br />
+          <label htmlFor="directions">Directions:</label>
+            <textarea name="directions" value={this.state.directions}></textarea>
+          <label htmlFor="creator">Creator Name:</label>
+            <input type="text" name="creator" value={this.state.creator}></input>
+          <input type="submit" value="Submit Recipe"></input>
         </form>
       </div>
     )

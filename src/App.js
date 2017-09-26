@@ -40,11 +40,12 @@ class App extends Component {
       name: "RecipeName",
       link: "recipelink"
     }
-  
+
 
     return (
       <div className="App">
-        <HomePage />
+        <NavBar handleClick={this.handleClick}/>
+        {page}
       </div>
     );
   }
