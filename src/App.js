@@ -1,18 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import HomePage from './components/homePage.js'
+import UserProfile from './components/userProfile.js'
+import NavBar from './components/navBar.js'
+import NewRecipe from './components/newRecipe.js'
+import RecipeSearch from './components/recipeSearch.js'
+import RecipeDetails from './components/recipeDetails.js'
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      visiblePage: "http://localhost:3000/home"
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    event.preventDefault()
+    this.setState({visiblePage: event.target.href})
+  }
+
   render() {
+    let page;
+    if(this.state.visiblePage === "http://localhost:3000/home") {
+      page = <HomePage />
+    } else if(this.state.visiblePage === "http://localhost:3000/user-profile") {
+      page = <UserProfile />
+    } else if(this.state.visiblePage === "http://localhost:3000/submit-recipe") {
+      page = <NewRecipe />
+    } else if(this.state.visiblePage === "http://localhost:3000/search-recipes") {
+      page = <RecipeSearch />
+    } else if(this.state.visiblePage === "http://localhost:3000/recipe-details") {
+      page = <RecipeDetails />
+    }
+
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <NavBar handleClick = {this.handleClick} />
+        {page}
       </div>
     );
   }
