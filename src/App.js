@@ -12,28 +12,27 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      visiblePage: "home"
+      visiblePage: "http://localhost:3000/home"
     }
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event) {
     event.preventDefault()
-    debugger;
     this.setState({visiblePage: event.target.href})
   }
 
   render() {
     let page;
-    if(this.state.visiblePage === "home") {
+    if(this.state.visiblePage === "http://localhost:3000/home") {
       page = <HomePage />
-    } else if(this.state.visiblePage === "http://localhost:3000/user-profile") {
+    } else if(this.state.visiblePage === "http://localhost:3000//user-profile") {
       page = <UserProfile />
-    } else if(this.state.visiblePage === "submit-recipe") {
+    } else if(this.state.visiblePage === "http://localhost:3000/submit-recipe") {
       page = <NewRecipe />
-    } else if(this.state.visbilePage === "search-recipes") {
+    } else if(this.state.visbilePage === "http://localhost:3000/search-recipes") {
       page = <RecipeSearch />
-    } else if(this.state.visiblePage === "recipe-details") {
+    } else if(this.state.visiblePage === "http://localhost:3000/recipe-details") {
       page = <RecipeDetails />
     }
 

@@ -3,7 +3,7 @@ import React from 'react';
 class RecipeSearch extends React.Component {
   render() {
     return (
-      <h1>Look for a Recipe!</h1>
+      <h1>Search!</h1>
     )
   }
 }
