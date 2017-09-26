@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import InstructionForm from './instructionForm.js';
-import IngredientForm from './ingredientForm.js'
+// import InstructionForm from './instructionForm.js';
+// import IngredientForm from './ingredientForm.js'
 
 class NewRecipe extends React.Component {
   constructor() {
@@ -15,9 +14,9 @@ class NewRecipe extends React.Component {
         prepTime: 0,
         directions: "",
         creator: ""
-        }
+      }
       };
-      // this.handleInputChange = this.handleInputChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
     }
 
   handleInputChange(name, event) {
@@ -26,10 +25,22 @@ class NewRecipe extends React.Component {
     this.setState({recipe: recipe})
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    const { recipe } = this.state;
+    let form = event.target;
+    fetch(form.action, {
+      method: "POST",
+      data: recipe
+    }).then(function(response) {
+      console.log(response);
+    })
+  }
+
   render() {
     return (
       <div>
-        <form method="post" action="https://stark-falls-42396.herokuapp.com/recipes">
+        <form method="post" action="http://localhost:3001/recipes">
           <label htmlFor="recipeName">Name:</label>
           <input type="text" name="recipeName" value={this.state.recipeName} onChange={this.handleInputChange.bind(this, 'recipeName')}></input>
           <label htmlFor="category">Category:</label>
@@ -56,7 +67,7 @@ class NewRecipe extends React.Component {
             <textarea name="directions" value={this.state.directions} onChange={this.handleInputChange.bind(this, 'directions')}></textarea>
           <label htmlFor="creator">Creator Name:</label>
             <input type="text" name="creator" value={this.state.creator} onChange={this.handleInputChange.bind(this, 'creator')}></input>
-          <input type="submit" value="Submit Recipe"></input>
+          <input type="submit" value="Submit Recipe" onSubmit={this.handleSubmit}></input>
         </form>
       </div>
     )
