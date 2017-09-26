@@ -15,8 +15,14 @@ class NewRecipe extends React.Component {
               <option value="Main"></option>
               <option value="Desserts"></option>
             </datalist>
-          <label for=""></label>
-          <input type="text" name=""></input>
+          <label for="difficulty_level">Difficulty Level</label>
+            <select name="recipe[:difficulty_level]">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
           <label for=""></label>
           <input type="text" name=""></input>
           <label for=""></label>
