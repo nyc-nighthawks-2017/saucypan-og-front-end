@@ -1,8 +1,20 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import InstructionForm from './instructionForm.js';
 import IngredientForm from './ingredientForm.js'
 
 class NewRecipe extends React.Component {
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    // post request
+    ReactDOM.render(<IngredientForm />, document.getElementById('ingredient-form'));
+  }
+
   render() {
     return (
       <div>
@@ -26,7 +38,9 @@ class NewRecipe extends React.Component {
               <option value="5">5</option>
             </select><br />
             <label>Add Ingredient:</label>
-            <IngredientForm />
+            <div id="ingredient-form">
+              <IngredientForm handleSubmit={ this.handleSubmit }/>
+            </div>
           <label for="recipe[:prep_time]">Prep Time (mins):</label>
           <input type="text" name="recipe[:prep_time]"></input><br />
           <label>Add Direction:</label>
