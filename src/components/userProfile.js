@@ -3,7 +3,7 @@ import React from 'react';
 class UserProfile extends React.Component {
   render() {
     return (
-      <h1>Hello User!</h1>
+      <h1>Hi</h1>
     )
   }
 }

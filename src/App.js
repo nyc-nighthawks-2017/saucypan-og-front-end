@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import HomePage from './components/homePage.js'
 import UserProfile from './components/userProfile.js'
@@ -26,11 +26,11 @@ class App extends Component {
     let page;
     if(this.state.visiblePage === "http://localhost:3000/home") {
       page = <HomePage />
-    } else if(this.state.visiblePage === "http://localhost:3000//user-profile") {
+    } else if(this.state.visiblePage === "http://localhost:3000/user-profile") {
       page = <UserProfile />
     } else if(this.state.visiblePage === "http://localhost:3000/submit-recipe") {
       page = <NewRecipe />
-    } else if(this.state.visbilePage === "http://localhost:3000/search-recipes") {
+    } else if(this.state.visiblePage === "http://localhost:3000/search-recipes") {
       page = <RecipeSearch />
     } else if(this.state.visiblePage === "http://localhost:3000/recipe-details") {
       page = <RecipeDetails />
