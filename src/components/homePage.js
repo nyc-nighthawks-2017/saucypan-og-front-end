@@ -16,7 +16,6 @@ class HomePage extends React.Component {
       <div>
         <header>
           <h1>Saucy Pan</h1>
-          <NavBar />
           <SearchRecipesForm />
           <TopRatedDisplay />
           <MostRecentDisplay />
