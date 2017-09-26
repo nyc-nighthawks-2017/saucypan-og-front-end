@@ -22,3 +22,30 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+/*adams css*/
+.recipesSubmitted {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  width: 60%;
+  height: 500px;
+  margin-left: 20%;
+  margin-bottom: 20px;
+}
+.recipesSubmitted h4 {
+  margin-top: 50px;
+  /*margin-left: 22%;*/
+}
+
+.recipesRated {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  width: 60%;
+  height: 500px;
+  margin-left: 20%;
+}
+.greeting {
+  float: left;
+  margin-left: 20%;
+}

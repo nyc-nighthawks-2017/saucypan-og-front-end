@@ -40,6 +40,7 @@ class App extends Component {
       name: "RecipeName",
       link: "recipelink"
     }
+  
 
     return (
       <div className="App">
