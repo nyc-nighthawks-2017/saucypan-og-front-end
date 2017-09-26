@@ -7,6 +7,7 @@ import NavBar from './components/navBar.js'
 import NewRecipe from './components/newRecipe.js'
 import RecipeSearch from './components/recipeSearch.js'
 import RecipeDetails from './components/recipeDetails.js'
+import CategoryDisplay from './components/categoryDisplay.js'
 
 class App extends Component {
   constructor() {
@@ -35,11 +36,16 @@ class App extends Component {
     } else if(this.state.visiblePage === "http://localhost:3000/recipe-details") {
       page = <RecipeDetails />
     }
+    let recipe = {
+      name: "RecipeName",
+      link: "recipelink"
+    }
 
     return (
       <div className="App">
         <NavBar handleClick = {this.handleClick} />
         {page}
+        <CategoryDisplay recipe={recipe} />
       </div>
     );
   }
