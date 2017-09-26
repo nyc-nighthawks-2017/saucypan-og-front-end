@@ -44,9 +44,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <NavBar handleClick = {this.handleClick} />
-        {page}
-        <CategoryDisplay recipe={recipe} />
+        <HomePage />
       </div>
     );
   }
