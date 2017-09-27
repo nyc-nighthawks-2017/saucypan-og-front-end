@@ -13,13 +13,20 @@ class UserProfile extends React.Component {
 
   componentDidMount(){
     const proxyurl = "https://stark-falls-42396.herokuapp.com/";
-    const url = "http://localhost:3001/users/11";
-    fetch("/users/11")
+    const url = "http://localhost:3001/users/78";
+    fetch("http://localhost:3001/users/78",
+      {method: 'GET',
+      headers: {"Accept": 'application/json'}})
     .then((res) => {
-      console.log(res);
-      this.setState({userName: res.obj});
+      let resp = res.json();
+      return resp;
+    }).then((obj) => {
+      // debugger;
+      console.log(obj);
+      this.setState({
+        userName: obj.user_info.first_name
+      })
     })
-
   }
 
   render() {
