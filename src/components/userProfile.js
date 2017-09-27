@@ -12,8 +12,8 @@ class UserProfile extends React.Component {
   }
 
   componentDidMount(){
-    const proxyurl = "https://stark-falls-42396.herokuapp.com/";
-    const url = "http://localhost:3001/users/78";
+    // const proxyurl = "https://stark-falls-42396.herokuapp.com/";
+    // const url = "http://localhost:3001/users/78";
     fetch("http://localhost:3001/users/78",
       {method: 'GET',
       headers: {"Accept": 'application/json'}})

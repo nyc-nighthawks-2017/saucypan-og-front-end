@@ -28,7 +28,7 @@ class NewRecipe extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const { recipe } = this.state;
-    debugger;
+    // debugger;
     fetch("http://localhost:3001/recipes", {
       method: "POST",
       headers: {
