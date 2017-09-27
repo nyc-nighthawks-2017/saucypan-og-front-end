@@ -9,7 +9,7 @@ class NewRecipe extends React.Component {
       recipe: {
         recipeName: "",
         category: "",
-        diffcultyLevel: 1,
+        difficultyLevel: 1,
         ingredient: "",
         prepTime: 0,
         directions: "",
@@ -28,10 +28,14 @@ class NewRecipe extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const { recipe } = this.state;
-    let form = event.target;
-    fetch(form.action, {
+    debugger;
+    fetch("http://localhost:3001/recipes", {
       method: "POST",
-      data: recipe
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({recipe})
     }).then(function(response) {
       console.log(response);
     })
@@ -67,7 +71,7 @@ class NewRecipe extends React.Component {
             <textarea name="directions" value={this.state.directions} onChange={this.handleInputChange.bind(this, 'directions')}></textarea>
           <label htmlFor="creator">Creator Name:</label>
             <input type="text" name="creator" value={this.state.creator} onChange={this.handleInputChange.bind(this, 'creator')}></input>
-          <input type="submit" value="Submit Recipe" onSubmit={this.handleSubmit}></input>
+          <input type="submit" value="Submit Recipe" onClick={this.handleSubmit}></input>
         </form>
       </div>
     )
